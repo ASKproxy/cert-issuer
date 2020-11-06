@@ -12,6 +12,8 @@ RUN apk add --update \
         gmp-dev \
         libffi-dev \
         libressl-dev \
+        libxml2-dev \
+        libxslt-dev \
         linux-headers \
         make \
         musl-dev \
