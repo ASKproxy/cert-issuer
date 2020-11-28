@@ -40,14 +40,13 @@ ENV LC_TYPE en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 
 # configure cert-issuer
-ARG ISSUER=<issuing-address>
 COPY . /cert-issuer
-COPY conf_regtest.ini /etc/cert-issuer/conf.ini
+COPY conf_testnet.ini /etc/cert-issuer/conf.ini
 RUN mkdir -p /etc/cert-issuer/
 WORKDIR /cert-issuer
 RUN pip3 install cert-issuer
 RUN pip3 install -r requirements.txt
-RUN sed -i.bak "s/<issuing-address>/$ISSUER/g" /etc/cert-issuer/conf.ini
+
 
 # configure wsgi
 ENV PYTHON python3.6
@@ -59,7 +58,7 @@ RUN virtualenv -p python3 venv
 RUN pip3 install uwsgi flask
 
 # configure nginx
-ARG SERVER=<server-name>
+ARG SERVER=127.0.0.1
 EXPOSE 80
 WORKDIR /cert-issuer
 COPY cert_issuer_site /etc/nginx/sites-available
@@ -67,4 +66,6 @@ RUN ln -s /etc/nginx/sites-available/cert_issuer_site /etc/nginx/sites-enabled
 RUN sed -i.bak "s/<server-name>/$SERVER/g" /etc/nginx/sites-available/cert_issuer_site
 RUN sed -i.bak "s/# server_names_hash_bucket_size 64/server_names_hash_bucket_size 128/g" /etc/nginx/nginx.conf
 RUN chmod +x start-cert-issuer.sh
-ENTRYPOINT bitcoind -daemon && service nginx start && uwsgi --ini wsgi.ini
+
+
+ENTRYPOINT ./start-cert-issuer.sh && service nginx start && uwsgi --ini wsgi.ini

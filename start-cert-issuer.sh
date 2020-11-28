@@ -4,22 +4,25 @@
 set -e
 
 # start the bitcoin service
-bitcoind -daemon
+#bitcoind -daemon
 
 # wait for bitcoind to start accepting connections
-while ! nc -z localhost 8332 </dev/null; do sleep 10; done
+#while ! nc -z localhost 8332 </dev/null; do sleep 10; done
 
 # Create an issuing address and save the output
-ISSUER=$(bitcoin-cli getnewaddress "" legacy)
+ISSUER=mg66utoAPvJX4mzQ5qoUEBgshACRkVqmB7
+echo $ISSUER
 sed -i.bak "s/<issuing-address>/$ISSUER/g" /etc/cert-issuer/conf.ini
-KEY="$(bitcoin-cli dumpprivkey $ISSUER)"
+KEY=cUHBwc6mwQoaSse4ggJVBptWcCN5VkJKZDwRtUGmMsA5TpE7SDfm
 echo $KEY > /etc/cert-issuer/pk_issuer.txt
+echo $KEY
 
 # advance network
-bitcoin-cli generate 101
+#bitcoin-cli generate 101
 
 # send btc to issuer address
-bitcoin-cli sendtoaddress $ISSUER 5
+#bitcoin-cli sendtoaddress $ISSUER 5
 
 # start web service
-service nginx start && uwsgi --ini wsgi.ini
+#service nginx start && uwsgi --ini wsgi.ini
+
