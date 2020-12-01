@@ -4,6 +4,7 @@ chainpoint>=0.0.2
 configargparse==0.12.0
 glob2==0.6
 mock==2.0.0
+MarkupSafe==1.1.1
 requests[security]>=2.18.4
 pycoin==0.80
 pyld>=1.0.3
@@ -11,3 +12,4 @@ pysha3>=1.0.2
 python-bitcoinlib>=0.10.1
 tox>=3.0.0
 jsonschema<3.0.0
+

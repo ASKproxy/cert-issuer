@@ -22,7 +22,8 @@ RUN apk add --update \
         python3-dev \
         tar \
     && python3 -m ensurepip \
-    && pip3 install --upgrade pip setuptools \
+    && pip3 install --upgrade pip \
+    && pip3 install setuptools==46.4.0 \
     && mkdir -p /etc/cert-issuer/data/unsigned_certificates \
     && mkdir /etc/cert-issuer/data/blockchain_certificates \
     && mkdir ~/.bitcoin \
