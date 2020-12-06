@@ -296,9 +296,9 @@ xtn_provider_list = providers.providers_for_config_string(PYCOIN_XTN_PROVIDERS,
                                                           helpers.to_pycoin_chain(Chain.bitcoin_testnet))
 xtn_provider_list.append(ChainSoProvider(netcode=helpers.to_pycoin_chain(Chain.bitcoin_testnet)))
 xtn_provider_list.append(BlockcypherProvider('https://api.blockcypher.com/v1/btc/test3', blockcypher_token))
-xtn_provider_list.append(BlockExplorerBroadcaster('https://testnet.blockexplorer.com/api'))
-xtn_provider_list.append(BlockstreamBroadcaster('https://blockstream.info/testnet/api'))
-xtn_provider_list.append(BitpayBroadcaster('https://test-insight.bitpay.com/api'))
+# xtn_provider_list.append(BlockExplorerBroadcaster('https://testnet.blockexplorer.com/api'))
+# xtn_provider_list.append(BlockstreamBroadcaster('https://blockstream.info/testnet/api'))
+# xtn_provider_list.append(BitpayBroadcaster('https://test-insight.bitpay.com/api'))
 connectors[Chain.bitcoin_testnet] = xtn_provider_list
 
 

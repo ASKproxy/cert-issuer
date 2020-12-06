@@ -1,12 +1,11 @@
 import json
 import logging
 
-# from cert_schema import normalize_jsonld
+from cert_schema import normalize_jsonld
 from cert_schema import validate_v2
 from cert_issuer import helpers
 from pycoin.serialize import b2h
 from cert_issuer.models import CertificateHandler, BatchHandler
-from cert_issuer.copy_jsonld_helpers import normalize_jsonld
 from cert_issuer.signer import FinalizableSigner
 
 class CertificateV2Handler(CertificateHandler):

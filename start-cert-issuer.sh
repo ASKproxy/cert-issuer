@@ -10,10 +10,10 @@ set -e
 #while ! nc -z localhost 8332 </dev/null; do sleep 10; done
 
 # Create an issuing address and save the output
-ISSUER=mg66utoAPvJX4mzQ5qoUEBgshACRkVqmB7
+ISSUER=
 echo $ISSUER
 sed -i.bak "s/<issuing-address>/$ISSUER/g" /etc/cert-issuer/conf.ini
-KEY=cUHBwc6mwQoaSse4ggJVBptWcCN5VkJKZDwRtUGmMsA5TpE7SDfm
+KEY=
 echo $KEY > /etc/cert-issuer/pk_issuer.txt
 echo $KEY
 
